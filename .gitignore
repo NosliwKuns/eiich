@@ -1,0 +1,15 @@
+.bash_history
+.bash_logout
+.bashrc
+.cache/
+.config/
+.degit/
+.mongodb/
+.npm/
+.profile
+.ssh/
+.viminfo
+bitnami_application_password
+bitnami_credentials
+htdocs
+stack
