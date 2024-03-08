@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import Goo from "gooey-react";
 import { Container } from "@/components/ui/Container";
 import { camara, celular, lavadora, microondas, refrigeradora } from "@/assets";
+import { Buttom } from "@/components/ui/Buttom";
 
 export const HeroSection = () => {
   const interBubbleRef = useRef<HTMLDivElement>(null);
@@ -56,14 +57,14 @@ export const HeroSection = () => {
       parX.current = event.clientX;
       parY.current = event.clientY;
 
-      fridge!.style.transform = `translate(${-35 + Math.round(parX.current) / sFridge
-        }%, ${-50 + Math.round(parY.current) / sFridge}% )`;
+      fridge!.style.transform = `translate(${-35 - Math.round(parX.current) / sFridge
+        }%, ${-50 - Math.round(parY.current) / sFridge}% )`;
 
       washMach!.style.transform = `translate(${-84 + Math.round(parX.current) / sWashMach
         }%, ${-30 + Math.round(parY.current) / sWashMach}% )`;
 
-      phone!.style.transform = `translate(${-55 + Math.round(parX.current) / sPhone
-        }%, ${-20 + Math.round(parY.current) / sPhone}% )`;
+      phone!.style.transform = `translate(${-55 - Math.round(parX.current) / sPhone
+        }%, ${-20 - Math.round(parY.current) / sPhone}% )`;
 
       microo!.style.transform = `translate(${-26 + Math.round(parX.current) / sMicroo
         }%, ${10 + Math.round(parY.current) / sMicroo}% )`;
@@ -104,9 +105,9 @@ export const HeroSection = () => {
               que tenemos.
             </span>
           </p>
-          <button className="bg-gradient-to-r from-electricPurple to-vividIndigo inline-block w-fit text-white py-4 px-8 rounded-2xl">
-            Quiero ser suscriptor
-          </button>
+          <Buttom className="px-10 py-4">
+            Quiero se suscriptor
+          </Buttom>
         </div>
         <div className="w-full relative aspect-square my-auto">
           <img
