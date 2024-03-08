@@ -7,33 +7,35 @@ import { camara, celular, lavadora, microondas, refrigeradora } from "@/assets";
 export const HeroSection = () => {
   const interBubbleRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
-  const curX = useRef(0);
-  const curY = useRef(0);
-  const tgX = useRef(0);
-  const tgY = useRef(0);
   const fridgeRef = useRef<HTMLImageElement>(null);
   const washMachRef = useRef<HTMLImageElement>(null);
   const phoneRef = useRef<HTMLImageElement>(null);
   const microoRef = useRef<HTMLImageElement>(null);
   const cameraRef = useRef<HTMLImageElement>(null);
+  const curX = useRef(0);
+  const curY = useRef(0);
+  const tgX = useRef(0);
+  const tgY = useRef(0);
   const parX = useRef(0);
   const parY = useRef(0);
 
   const sFridge = 500;
-  // const sWashMach = 400;
-  // const sPhone = 300;
-  // const sMicroo = 200;
+  const sWashMach = 400;
+  const sPhone = 300;
+  const sMicroo = 200;
   const sCamera = 100;
-  // const sBack = 400;
 
   useEffect(() => {
     const interBubble = interBubbleRef.current;
     const parallax = parallaxRef.current;
-    const camera = cameraRef.current;
     const fridge = fridgeRef.current;
+    const washMach = washMachRef.current;
+    const phone = phoneRef.current;
+    const camera = cameraRef.current;
+    const microo = microoRef.current;
 
     if (!interBubble) {
-      return; // Salir si interBubble es null
+      return;
     }
 
     function move() {
@@ -54,32 +56,27 @@ export const HeroSection = () => {
       parX.current = event.clientX;
       parY.current = event.clientY;
 
-      fridge!.style.transform = `translate(${
-        -35 + Math.round(parX.current) / sFridge
-      }%, ${-50 + Math.round(parY.current) / sFridge}% )`;
+      fridge!.style.transform = `translate(${-35 + Math.round(parX.current) / sFridge
+        }%, ${-50 + Math.round(parY.current) / sFridge}% )`;
 
-      camera!.style.transform = `translate(${
-        -82.5 + Math.round(parX.current) / sCamera
-      }%, ${20 + Math.round(parY.current) / sCamera}% )`;
+      washMach!.style.transform = `translate(${-84 + Math.round(parX.current) / sWashMach
+        }%, ${-30 + Math.round(parY.current) / sWashMach}% )`;
 
-      camera!.style.transform = `translate(${
-        -82.5 + Math.round(parX.current) / sCamera
-      }%, ${20 + Math.round(parY.current) / sCamera}% )`;
+      phone!.style.transform = `translate(${-55 + Math.round(parX.current) / sPhone
+        }%, ${-20 + Math.round(parY.current) / sPhone}% )`;
 
-      camera!.style.transform = `translate(${
-        -82.5 + Math.round(parX.current) / sCamera
-      }%, ${20 + Math.round(parY.current) / sCamera}% )`;
+      microo!.style.transform = `translate(${-26 + Math.round(parX.current) / sMicroo
+        }%, ${10 + Math.round(parY.current) / sMicroo}% )`;
 
-      camera!.style.transform = `translate(${
-        -82.5 + Math.round(parX.current) / sCamera
-      }%, ${20 + Math.round(parY.current) / sCamera}% )`;
+      camera!.style.transform = `translate(${-82.5 + Math.round(parX.current) / sCamera
+        }%, ${20 + Math.round(parY.current) / sCamera}% )`;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
 
     parallax!.addEventListener("mousemove", handleParallaxMove);
 
-    move(); // Iniciar el movimiento inicial
+    move();
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
@@ -89,25 +86,25 @@ export const HeroSection = () => {
   return (
     <section
       ref={parallaxRef}
-      className="h-screen max-h-[800px] overflow-hidden"
+      className="h-screen max-h-[800px] overflow-hidden relative"
     >
       <Container className="grid grid-cols-2 z-10 relative h-full">
         <div className="flex flex-col justify-center gap-8 pl-20 pr-16">
           <h2 className={`${styles.mainText} font-bold text-5xl italic`}>
-            Ganar nunca fue tan facil
+            Ganar nunca fue tan fácil
           </h2>
           <p className="text-sm font-normal">
             <span>
               Únete a nosotros y descubre cómo puedes convertirte en uno de
-              nuestros afortunados ganadores
+              nuestros afortunados ganadores.
             </span>
             <br />
             <span>
               ¿Qué esperas para inscribirte? Aprovecha los beneficios exclusivos
-              que tenemos
+              que tenemos.
             </span>
           </p>
-          <button className="bg-purple-600 inline-block w-fit text-white py-2 px-6">
+          <button className="bg-gradient-to-r from-electricPurple to-vividIndigo inline-block w-fit text-white py-4 px-8 rounded-2xl">
             Quiero ser suscriptor
           </button>
         </div>
@@ -132,13 +129,13 @@ export const HeroSection = () => {
           />
           <img
             ref={microoRef}
-            className="absolute w-[60%] z-40 top-1/2 left-1/2 -translate-x-[26%] -translate-y-[-10%]"
+            className="absolute w-[60%] z-40 top-1/2 left-1/2 -translate-x-[26%] -translate-y-[-10%] drop-shadow-2xl"
             src={microondas}
             alt="microondas"
           />
           <img
             ref={cameraRef}
-            className="absolute w-[55%] z-50 top-1/2 left-1/2"
+            className="absolute w-[55%] z-50 top-1/2 left-1/2 -translate-x-[82.5%] -translate-y-[-20%] drop-shadow-2xl"
             src={camara}
             alt="camara"
           />
@@ -152,17 +149,17 @@ export const HeroSection = () => {
           <div className={`${styles.g1} absolute opacity-100`}></div>
           <div className={`${styles.g2} absolute opacity-100`}></div>
           <div
-            className={`${styles.g3} absolute mix-blend-hard-light opacity-100`}
+            className={`${styles.g3} absolute opacity-100`}
           ></div>
           <div
-            className={`${styles.g4} absolute mix-blend-hard-light opacity-70`}
+            className={`${styles.g4} absolute opacity-100`}
           ></div>
           <div
-            className={`${styles.g5} absolute mix-blend-hard-light opacity-100`}
+            className={`${styles.g5} absolute opacity-100`}
           ></div>
           <div
             ref={interBubbleRef}
-            className={`${styles.interactive} absolute mix-blend-hard-light opacity-70`}
+            className={`${styles.interactive} absolute opacity-100`}
           ></div>
         </Goo>
       </div>

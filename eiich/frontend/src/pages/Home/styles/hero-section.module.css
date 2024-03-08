@@ -26,30 +26,16 @@
   animation: animate-gradient 2.5s linear infinite;
 }
 
-.circle {
-  width: 20vw;
-  aspect-ratio: 1/1;
-  background: linear-gradient(to bottom, #fa39ad 40%, #fe6c4c 50%);
-  position: absolute;
-  top: 0;
-  /* filter: blur(75px); */
-  top: calc(50% - var(--circle-size) / 2);
-  left: calc(50% - var(--circle-size) / 2);
-
-  transform-origin: center center;
-  animation: moveVertical 30s ease infinite, animate 5s ease-in-out infinite;
-  transition: all 1s ease-in-out;
-}
-
 .gradientsContainer {
-  filter: url(#goo) blur(50px);
+  filter:  blur(110px);
+  background: #f3f3ff;
 }
 
 .g1 {
-  width: 20vw;
+  width: 30vw;
   aspect-ratio: 1/1;
-  background: linear-gradient(to bottom, #FF71E1 40%, #FF71E1 50%);
-  filter: blur(75px);
+  background: linear-gradient(to bottom, #FF71E1 40%, #00BDFF 50%);
+  /* filter: blur(75px); */
   top: calc(50% - var(--circle-size) / 2);
   right: calc(50% - var(--circle-size) / 2);
 
@@ -62,7 +48,7 @@
   width: 20vw;
   aspect-ratio: 1/1;
   background: linear-gradient(to bottom, #AA78F9 40%, #AA78F9 50%);
-  filter: blur(75px);
+  /* filter: blur(75px); */
   top: calc(50% - var(--circle-size) / 2);
   right: calc(50% - var(--circle-size) / 2);
 
@@ -75,7 +61,7 @@
   width: 20vw;
   aspect-ratio: 1/1;
   background: linear-gradient(to bottom, #FF71E1 40%, #FF71E1 50%);
-  filter: blur(75px);
+  /* filter: blur(75px); */
   top: calc(50% - var(--circle-size) / 2 + 200px);
   right: calc(50% - var(--circle-size) / 2 - 500px);
 
@@ -87,8 +73,8 @@
 .g4 {
   width: 20vw;
   aspect-ratio: 1/1;
-  background: linear-gradient(to bottom, #AA78F9 40%, #AA78F9 50%);
-  filter: blur(75px);
+  background: linear-gradient(to bottom, #AA78F9 40%, #FF71E1 50%);
+  /* filter: blur(75px); */
   top: calc(50% - var(--circle-size) / 2);
   right: calc(50% - var(--circle-size) / 2);
 
@@ -101,9 +87,9 @@
   width: 20vw;
   aspect-ratio: 1/1;
   background: linear-gradient(to bottom, #FF71E1 40%, #FF71E1 50%);
-  filter: blur(75px);
+  /* filter: blur(75px); */
   top: calc(50% - var(--circle-size));
-  rigth: calc(50% - var(--circle-size));
+  right: calc(50% - var(--circle-size));
 
   transform-origin: calc(50% - 800px) calc(50% + 200px);
   animation: moveInCircle 20s ease infinite, animate 5s ease-in-out infinite;
@@ -113,8 +99,8 @@
 .interactive {
   width: 20vw;
   aspect-ratio: 1/1;
-  background: linear-gradient(to bottom, #AA78F9 40%, #AA78F9 50%);
-  filter: blur(75px);
+  background: linear-gradient(to bottom, #AA78F9 40%, #FF71E1 50%);
+  /* filter: blur(75px); */
   top: -25%;
   left: -10%;
   transform: translateX(50%) translateY(50%);
