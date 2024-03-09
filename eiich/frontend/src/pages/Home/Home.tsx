@@ -1,11 +1,11 @@
+import { AwardsSection } from "./components/AwardsSection"
 import { HeroSection } from "./components/HeroSection"
-
-
 
 const Home = () => {
   return (
     <>
-        <HeroSection />
+      <HeroSection />
+      <AwardsSection />
     </>
   )
 }

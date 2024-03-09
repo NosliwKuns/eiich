@@ -1,8 +1,24 @@
 import { Buttom } from "@/components/ui/Buttom"
 import { Container } from "@/components/ui/Container"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 
 export const Navbar = () => {
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20
+      setScrolled(isScrolled)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const links = [
     { id: '1', path: '/', title: 'Inicio' },
@@ -12,7 +28,7 @@ export const Navbar = () => {
   ]
 
   return (
-    <header className="fixed w-full z-[999]">
+    <header className={`fixed w-full z-[999] transition-all duration-300 ${scrolled ? 'bg-white' : 'bg-transparent'}`}>
       <Container>
         <nav className="flex items-center justify-between py-4">
           <h1 className="text-5xl">Eiich</h1>

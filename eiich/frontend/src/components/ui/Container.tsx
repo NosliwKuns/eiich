@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 
-interface ContainerProps {
+interface Props {
   children: ReactNode
   className?: string
 }
 
-export const Container: React.FC<ContainerProps> = ({ children, className }) => {
+export const Container: React.FC<Props> = ({ children, className }) => {
   return (
     <div className={`xl:container mx-auto px-6 ${className}`}>
       {children}

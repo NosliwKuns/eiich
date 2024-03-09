@@ -1,0 +1,15 @@
+.column:nth-of-type(1) {
+  top: -50%;
+}
+
+.column:nth-of-type(2) {
+  top: -94%;
+}
+
+.column:nth-of-type(3) {
+  top: -30%;
+}
+
+.column:nth-of-type(4) {
+  top: -84%;
+}

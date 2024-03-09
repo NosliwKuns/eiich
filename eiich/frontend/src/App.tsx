@@ -1,7 +1,8 @@
 import Home from "@/pages/Home/Home"
-// import { Navbar } from "./layout/Navbar"
 import { createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider } from 'react-router-dom'
 import { Navbar } from "./layout/Navbar"
+import Lenis from '@studio-freight/lenis'
+import { useEffect } from "react"
 
 function App() {
 
@@ -24,6 +25,19 @@ function App() {
 export default App
 
 const Root = () => {
+
+  useEffect(() => {
+    const lenis = new Lenis()
+
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  }, [])
+
   return (
     <>
       <Navbar />

@@ -10,22 +10,6 @@
   --circle-size: 80%;
 }
 
-.mainText {
-  background: linear-gradient(
-    to right,
-    #f92bb1,
-    #460def,
-    #820de7,
-    #460def,
-    #f92bb1
-  );
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
-}
-
 .gradientsContainer {
   filter:  blur(110px);
   background: #f3f3ff;

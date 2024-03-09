@@ -1,11 +1,11 @@
 import { ReactNode } from "react"
 
-interface ContainerProps {
+interface Props {
   children: ReactNode
   className?: string
 }
 
-export const Buttom: React.FC<ContainerProps> = ({ children, className }) => {
+export const Buttom: React.FC<Props> = ({ children, className }) => {
   return (
     // <button className={`bg-gradient-to-r from-electricPurple to-vividIndigo inline-block w-fit text-white text-sm rounded-2xl ${className}`}>
     //   {children}

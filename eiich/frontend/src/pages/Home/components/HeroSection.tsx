@@ -4,6 +4,7 @@ import Goo from "gooey-react";
 import { Container } from "@/components/ui/Container";
 import { camara, celular, lavadora, microondas, refrigeradora } from "@/assets";
 import { Buttom } from "@/components/ui/Buttom";
+import { Typography } from "@/components/ui/Typography";
 
 export const HeroSection = () => {
   const interBubbleRef = useRef<HTMLDivElement>(null);
@@ -91,9 +92,9 @@ export const HeroSection = () => {
     >
       <Container className="grid grid-cols-2 z-10 relative h-full">
         <div className="flex flex-col justify-center gap-8 pl-20 pr-16">
-          <h2 className={`${styles.mainText} font-bold text-5xl italic`}>
+          <Typography>
             Ganar nunca fue tan fácil
-          </h2>
+          </Typography>
           <p className="text-sm font-normal">
             <span>
               Únete a nosotros y descubre cómo puedes convertirte en uno de
