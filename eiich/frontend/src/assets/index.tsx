@@ -7,4 +7,14 @@ import refrigeradora from "@/assets/images/refrigeradora.webp"
 
 import plantillaPremio from "@/assets/images/plantilla-premio.png"
 
-export { camara, celular, lavadora, microondas, refrigeradora, plantillaPremio };
+import libroReclamaciones from "@/assets/svg/libro_reclamaciones.svg"
+
+export {
+	camara,
+	celular,
+	lavadora,
+	microondas,
+	refrigeradora,
+	plantillaPremio,
+	libroReclamaciones,
+}
