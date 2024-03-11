@@ -57,7 +57,6 @@ export const AwardsSection = () => {
           <Column images={[imgs[6], imgs[7], imgs[8], imgs[6]]} y={y3} />
           <Column images={[imgs[9], imgs[10], imgs[11], imgs[9]]} y={y4} />
         </div>
-        <div className="h-screen"></div>
       </Container>
     </section>
   )

@@ -101,12 +101,6 @@
   }
 }
 
-@keyframes animate-gradient {
-  to {
-    background-position: 200%;
-  }
-}
-
 @keyframes moveInCircle {
   0% {
     transform: rotate(0deg);
