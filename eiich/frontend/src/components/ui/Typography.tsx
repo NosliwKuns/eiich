@@ -6,10 +6,12 @@ interface Props {
   className?: string
 }
 
-export const Typography: React.FC<Props> = ({ children, className }) => {
+export const Typography: React.FC<Props> = ({ children, className = "" }) => {
   return (
-    <h2 className={`${styles.mainText} font-bold text-5xl italic ${className}`}>
-      { children }
-    </h2>
+		<h2
+			className={`${styles.mainText} font-bold text-5xl italic leading-tight ${className}`}
+		>
+			{children}
+		</h2>
   )
 }

@@ -5,7 +5,7 @@ interface Props {
 	className?: string
 }
 
-export const Buttom: React.FC<Props> = ({ children, className }) => {
+export const Buttom: React.FC<Props> = ({ children, className = "" }) => {
 	return (
 		<a
 			href="#_"
