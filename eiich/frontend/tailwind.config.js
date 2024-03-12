@@ -10,7 +10,8 @@ export default {
         magentaPink: "#f92bb1",
         electricPurple: "#820de7",
         vividIndigo: "#460def",
-        skyBlue: "#00bdff"
+        skyBlue: "#00bdff",
+        babyBlue: "#f3f3ff"
       }
     },
   },

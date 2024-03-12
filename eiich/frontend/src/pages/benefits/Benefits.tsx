@@ -1,6 +1,9 @@
+import { Header } from "@/components/Header"
 
 export const Benefits = () => {
-  return (
-    <div>Benefits</div>
-  )
+	return (
+		<>
+			<Header>Descubre un universo de beneficios exclusivos</Header>
+		</>
+	)
 }
