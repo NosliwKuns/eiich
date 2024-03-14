@@ -4,7 +4,6 @@
 
 .segment-overlay.flip .segment-overlay__top {
   animation: flip-top 0.8s linear;
-  delay-animation: 10s
 }
 
 .segment-overlay.flip .segment-overlay__bottom {
@@ -14,7 +13,6 @@
 @keyframes flip-top {
   0% {
     transform: rotateX(0deg);
-    opacity: 0
   }
   50%,
   100% {
