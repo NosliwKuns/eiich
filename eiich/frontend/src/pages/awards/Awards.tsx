@@ -1,9 +1,9 @@
 import { Header } from "@/components/Header"
 import { Container } from "@/components/ui/Container"
 import { Typography } from "@/components/ui/Typography"
-// import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
+import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
 import "@leenguyen/react-flip-clock-countdown/dist/index.css"
-import { FlipClockCountdown } from "./components/chatcito"
+// import { FlipClockCountdown } from "./components/chatcito"
 import { Buttom } from "@/components/ui/Buttom"
 
 export const Awards = () => {
@@ -31,7 +31,9 @@ export const Awards = () => {
 							Sólo necesitas adquirir alguno de nuestros planes de
 							membresía, que se irán renovando mes a mes
 						</p>
-						<Buttom className="w-full text-center py-4 items-end">Suscribirme ahora</Buttom>
+						<Buttom className="w-full text-center py-4 items-end">
+							Suscribirme ahora
+						</Buttom>
 					</div>
 					<div
 						className="rounded-2xl p-0 bg-cover bg-center h-full relative overflow-hidden aspect-[1/1.2]"
@@ -71,6 +73,23 @@ export const Awards = () => {
 					</p>
 					<FlipClockCountdown
 						to={new Date().getTime() + 24 * 3600 * 1000 + 5000}
+						labels={["Días", "Horas", "MINUTOS", "SEGUNDOS"]}
+						labelStyle={{
+							fontSize: 10,
+							fontWeight: 500,
+							textTransform: "uppercase",
+							color: "black",
+						}}
+						digitBlockStyle={{
+							width: 60,
+							height: 80,
+							fontSize: 40,
+							background: "#a841ff",
+						}}
+						dividerStyle={{ color: "white", height: 1 }}
+						separatorStyle={{ color: "#a841ff", size: "6px" }}
+						duration={0.5}
+						className="w-fit mx-auto"
 					/>
 				</div>
 			</Container>

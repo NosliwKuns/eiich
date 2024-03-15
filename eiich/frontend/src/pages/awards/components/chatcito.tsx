@@ -1,12 +1,12 @@
-import styles from "@/pages/awards/styles/FlipClockCountdown.module.css"
+// import styles from "@/pages/awards/styles/FlipClockCountdown.module.css"
 //
-import clsx from "clsx"
+// import clsx from "clsx"
 import React from "react"
 import FlipClockDigit from "./FlipClockDigit"
 // import { FlipClockCountdownProps, FlipClockCountdownState, FlipClockCountdownUnitTimeFormatted } from './types';
 import {
 	calcTimeDelta,
-	convertToPx,
+	// convertToPx,
 	parseTimeDelta,
 } from "@/pages/awards/utils/index"
 
@@ -16,36 +16,36 @@ const defaultLabels = ["Días", "Horas", "Minutos", "Segundos"]
 /**
  * A 3D animated flip clock countdown component for React.
  */
-export function FlipClockCountdown(props: FlipClockCountdownProps) {
+export function FlipClockCountdown(props: { to: string, onTick: void, onComplete: void}) {
 	const {
 		to,
-		className,
-		style,
-		children,
+		// className,
+		// style,
+		// children,
 		onComplete = () => {},
 		onTick = () => {},
-		showLabels = true,
-		showSeparators = true,
-		labels = defaultLabels,
-		labelStyle,
-		digitBlockStyle,
-		separatorStyle,
-		dividerStyle,
-		duration = 0.7,
+		// showLabels = true,
+		// showSeparators = true,
+		// labels = defaultLabels,
+		// labelStyle,
+		// digitBlockStyle,
+		// separatorStyle,
+		// dividerStyle,
+		// duration = 0.7,
 		renderMap = defaultRenderMap,
-		hideOnComplete = true,
-		...other
+		// hideOnComplete = true,
+		// ...other
 	} = props
 	// eslint-disable-next-line @typescript-eslint/no-use-before-define
 	const [state, setState] =
-		React.useState<FlipClockCountdownState>(constructState)
+		React.useState(constructState)
 	const countdownRef = React.useRef(0)
 
 	function clearTimer() {
 		window.clearInterval(countdownRef.current)
 	}
 
-	function constructState(): FlipClockCountdownState {
+	function constructState() {
 		const timeDelta = calcTimeDelta(to)
 		return {
 			timeDelta,
@@ -71,53 +71,53 @@ export function FlipClockCountdown(props: FlipClockCountdownProps) {
 		return () => clearTimer()
 	}, [to])
 
-	const containerStyles = React.useMemo<React.CSSProperties>(() => {
-		const s = {
-			"--fcc-flip-duration": `${duration}s`,
-			"--fcc-digit-block-width": convertToPx(digitBlockStyle?.width),
-			"--fcc-digit-block-height": convertToPx(digitBlockStyle?.height),
-			"--fcc-shadow": digitBlockStyle?.boxShadow,
-			"--fcc-digit-font-size": convertToPx(digitBlockStyle?.fontSize),
-			"--fcc-digit-color": digitBlockStyle?.color,
-			"--fcc-label-font-size": convertToPx(labelStyle?.fontSize),
-			"--fcc-label-color": labelStyle?.color,
-			"--fcc-divider-color": dividerStyle?.color,
-			"--fcc-divider-height": convertToPx(dividerStyle?.height),
-			"--fcc-background":
-				digitBlockStyle?.background || digitBlockStyle?.backgroundColor,
-			"--fcc-separator-size": convertToPx(separatorStyle?.size),
-			"--fcc-separator-color": showSeparators
-				? separatorStyle?.color
-				: "transparent",
-			...style,
-		}
+	// const containerStyles = React.useMemo<React.CSSProperties>(() => {
+	// 	const s = {
+	// 		"--fcc-flip-duration": `${duration}s`,
+	// 		"--fcc-digit-block-width": convertToPx(digitBlockStyle?.width),
+	// 		"--fcc-digit-block-height": convertToPx(digitBlockStyle?.height),
+	// 		"--fcc-shadow": digitBlockStyle?.boxShadow,
+	// 		"--fcc-digit-font-size": convertToPx(digitBlockStyle?.fontSize),
+	// 		"--fcc-digit-color": digitBlockStyle?.color,
+	// 		"--fcc-label-font-size": convertToPx(labelStyle?.fontSize),
+	// 		"--fcc-label-color": labelStyle?.color,
+	// 		"--fcc-divider-color": dividerStyle?.color,
+	// 		"--fcc-divider-height": convertToPx(dividerStyle?.height),
+	// 		"--fcc-background":
+	// 			digitBlockStyle?.background || digitBlockStyle?.backgroundColor,
+	// 		"--fcc-separator-size": convertToPx(separatorStyle?.size),
+	// 		"--fcc-separator-color": showSeparators
+	// 			? separatorStyle?.color
+	// 			: "transparent",
+	// 		...style,
+	// 	}
 
-		return s
-	}, [
-		style,
-		digitBlockStyle,
-		labelStyle,
-		duration,
-		dividerStyle,
-		separatorStyle,
-		showSeparators,
-	])
+	// 	return s
+	// }, [
+	// 	style,
+	// 	digitBlockStyle,
+	// 	labelStyle,
+	// 	duration,
+	// 	dividerStyle,
+	// 	separatorStyle,
+	// 	showSeparators,
+	// ])
 
-	const _digitBlockStyle = React.useMemo(() => {
-		if (digitBlockStyle) {
-			return {
-				...digitBlockStyle,
-				background: undefined,
-				backgroundColor: undefined,
-				width: undefined,
-				height: undefined,
-				boxShadow: undefined,
-				fontSize: undefined,
-				color: undefined,
-			}
-		}
-		return undefined
-	}, [digitBlockStyle])
+	// const _digitBlockStyle = React.useMemo(() => {
+	// 	if (digitBlockStyle) {
+	// 		return {
+	// 			...digitBlockStyle,
+	// 			background: undefined,
+	// 			backgroundColor: undefined,
+	// 			width: undefined,
+	// 			height: undefined,
+	// 			boxShadow: undefined,
+	// 			fontSize: undefined,
+	// 			color: undefined,
+	// 		}
+	// 	}
+	// 	return undefined
+	// }, [digitBlockStyle])
 
 	const sections = React.useMemo(() => {
 		const formatted = parseTimeDelta(state.timeDelta)
