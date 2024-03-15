@@ -33,7 +33,7 @@ export const Navbar = () => {
 			}`}
 		>
 			<Container>
-				<nav className="flex items-center justify-between py-4">
+				<nav className="flex items-center justify-between py-4 text-electric-violet-950">
 					<h1 className="text-5xl">Eiich</h1>
 					<ul className="flex gap-8 font-semibold text-sm">
 						{links.map((link) => (

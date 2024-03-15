@@ -3,7 +3,8 @@ import { Container } from "@/components/ui/Container"
 import { Typography } from "@/components/ui/Typography"
 // import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
 import "@leenguyen/react-flip-clock-countdown/dist/index.css"
-import { FlipClockCountdown } from './components/chatcito';
+import { FlipClockCountdown } from "./components/chatcito"
+import { Buttom } from "@/components/ui/Buttom"
 
 export const Awards = () => {
 	return (
@@ -14,61 +15,64 @@ export const Awards = () => {
 				</Typography>
 			</Header>
 			<Container className="mt-12">
-				{/* <Typography className="text-2xl font-semibold mb-4">
-					Premio del Mes
-				</Typography>
-				<Typography className="text-lg mb-4">
-					¡No te pierdas la oportunidad de ganar!
-				</Typography>
-
-				<div className="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md mb-4">
-					<img
-						src="/ruta-de-la-imagen.jpg"
-						alt="Premio del Mes"
-						className="w-24 h-24 rounded-full mb-2"
-					/>
-					<Typography className="text-lg font-semibold mb-2">
-						Título del Premio
-					</Typography>
-					<Typography className="text-base mb-2">
-						Fecha del Sorteo: 28 de Febrero, 2024
-					</Typography>
-				</div> */}
-				<div className="grid grid-cols-2 gap-8">
-					<div className="bg-babyBlue w-full max-w-[680px] px-10 py-14">
-						<h6>Premio del mes</h6>
-						<div className="bg-white max-w-[100%] rounded-tl-xl rounded-bl-xl ml-auto -mr-12">
-							<p>Mackbook Air</p>
-							<p>Próximo sorteo 30 de Mayo</p>
+				<div className="grid grid-cols-2 gap-8 text-electric-violet-950">
+					<div className="flex flex-col gap-8 bg-babyBlue w-full max-w-[680px] px-10 py-14 rounded-2xl">
+						<h6 className="text-2xl text-vividIndigo font-semibold">
+							Premio del mes
+						</h6>
+						<div className="flex flex-col gap-4 px-4 py-8 bg-white w-full rounded-tl-xl rounded-bl-xl ml-auto -mr-12">
+							<p className="text-3xl font-bold text-electric-violet-950">
+								Mackbook Air
+							</p>
+							<p>Lun. 22 de Abril</p>
+						</div>
+						<p>!No te pierdas la oportunidad!</p>
+						<p>
+							Sólo necesitas adquirir alguno de nuestros planes de
+							membresía, que se irán renovando mes a mes
+						</p>
+						<Buttom className="w-full text-center py-4 items-end">Suscribirme ahora</Buttom>
+					</div>
+					<div
+						className="rounded-2xl p-0 bg-cover bg-center h-full relative overflow-hidden aspect-[1/1.2]"
+						style={{
+							backgroundImage:
+								"url(https://images.unsplash.com/photo-1611244419377-b0a760c19719?w=800&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFydGlzdHxlbnwwfHwwfHx8MA%3D%3D&quot)",
+						}}
+					>
+						<div
+							className="absolute inset-0"
+							style={{
+								backgroundImage:
+									"linear-gradient(transparent 0%, rgb(109, 16, 185) 100%)",
+							}}
+						>
+							<div className="h-full flex">
+								<div
+									className="leading-none p-6 rounded-2xl mt-auto mb-2 text-4xl font-semibold drop-shadow-sm tracking-tight"
+									style={{ color: "rgb(250, 244, 255)" }}
+								>
+									{" "}
+									Create<br></br>{" "}
+									<span
+										style={{ color: "rgb(233, 208, 255)" }}
+									>
+										color scales<br></br>
+									</span>{" "}
+									in seconds.{" "}
+								</div>
+							</div>
 						</div>
 					</div>
-					<div>a</div>
 				</div>
-
-				{/* <FlipClockCountdown
-					to={new Date().getTime() + 24 * 3600 * 1000 + 5000}
-					labels={["Días", "Horas", "Minutos", "Segundos"]}
-					labelStyle={{
-						fontSize: 14,
-						fontWeight: 600,
-						textTransform: "uppercase",
-						color: "black",
-					}}
-					digitBlockStyle={{
-						display: "flex",
-						background: "#820de7",
-						width: "7vw",
-						maxWidth: "85px",
-						aspectRatio: "1/1.6",
-						height: "100%",
-						fontSize: "min(6vw, 5.3rem)",
-					}}
-					dividerStyle={{ color: "white", height: 1 }}
-					separatorStyle={{ color: "#820de7", size: "6px" }}
-					duration={0.5}
-					className="flex items-center justify-center font-semibold mt-8"
-				/> */}
-				<FlipClockCountdown to={new Date().getTime() + 24 * 3600 * 1000 + 5000} />
+				<div className="flex flex-col gap-4 mt-10">
+					<p className="text-3xl text-center font-semibold text-electric-violet-950">
+						Próxima edición
+					</p>
+					<FlipClockCountdown
+						to={new Date().getTime() + 24 * 3600 * 1000 + 5000}
+					/>
+				</div>
 			</Container>
 		</div>
 	)
