@@ -62,7 +62,7 @@ export const Navbar = () => {
 							</li>
 						))}
 					</ul>
-					<Buttom className="px-6 py-3">Iniciar Sesión</Buttom>
+					<Buttom to="/iniciar-sesion" className="px-6 py-3">Iniciar Sesión</Buttom>
 				</nav>
 			</Container>
 		</header>
