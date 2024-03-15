@@ -1,8 +1,9 @@
 import { Header } from "@/components/Header"
 import { Container } from "@/components/ui/Container"
 import { Typography } from "@/components/ui/Typography"
-import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
+// import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
 import "@leenguyen/react-flip-clock-countdown/dist/index.css"
+import { FlipClockCountdown } from './components/chatcito';
 
 export const Awards = () => {
 	return (
@@ -44,7 +45,7 @@ export const Awards = () => {
 					<div>a</div>
 				</div>
 
-				<FlipClockCountdown
+				{/* <FlipClockCountdown
 					to={new Date().getTime() + 24 * 3600 * 1000 + 5000}
 					labels={["Días", "Horas", "Minutos", "Segundos"]}
 					labelStyle={{
@@ -66,7 +67,8 @@ export const Awards = () => {
 					separatorStyle={{ color: "#820de7", size: "6px" }}
 					duration={0.5}
 					className="flex items-center justify-center font-semibold mt-8"
-				/>
+				/> */}
+				<FlipClockCountdown to={new Date().getTime() + 24 * 3600 * 1000 + 5000} />
 			</Container>
 		</div>
 	)
