@@ -1,3 +1,5 @@
+import { Input } from "@/components/Input"
+import { Buttom } from "@/components/ui/Buttom"
 import { Typography } from "@/components/ui/Typography"
 
 export const Login = () => {
@@ -10,20 +12,7 @@ export const Login = () => {
 							<Typography className="mb-6 font-extrabold text-dark-grey-900">
 								Iniciar sesión
 							</Typography>
-							<a className="flex items-center justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-gray-700 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:ring-grey-300">
-								<img
-									className="h-5 mr-2"
-									src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
-									alt=""
-								/>
-								Iniciar sesión con Google
-							</a>
-							<div className="flex items-center mb-3">
-								<hr className="h-0 border-b border-solid border-gray-200 grow" />
-								<p className="mx-4 text-grey-600">o</p>
-								<hr className="h-0 border-b border-solid border-gray-200 grow" />
-							</div>
-							<label
+							{/* <label
 								htmlFor="email"
 								className="mb-2 text-sm text-start text-gray-700"
 							>
@@ -46,7 +35,20 @@ export const Login = () => {
 								type="password"
 								placeholder="Ingresa tu contraseña"
 								className="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-gray-400 placeholder:text-gray-700 bg-gray-200 text-dark-gray-900 rounded-2xl"
+							/> */}
+							<label
+								htmlFor="password"
+								className="mb-2 text-sm text-start text-grey-900"
+							>
+								Contraseña*
+							</label>
+							<input
+								id="password"
+								type="password"
+								placeholder="Ingresa tu contraseña"
+								className="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-gray-400 placeholder:text-gray-700 bg-gray-200 text-dark-gray-900 rounded-2xl"
 							/>
+							<Input />
 							<div className="flex flex-row justify-between mb-8">
 								<label className="relative inline-flex items-center mr-3 cursor-pointer select-none">
 									<input
@@ -73,9 +75,22 @@ export const Login = () => {
 									Olvidaste la contraseña?
 								</a>
 							</div>
-							<button className="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 md:w-96 rounded-2xl hover:bg-purple-600 focus:ring-4 focus:ring-purple-100 bg-purple-500">
+							<Buttom className="w-full py-4">
 								Iniciar sesión
-							</button>
+							</Buttom>
+							<div className="flex items-center my-3">
+								<hr className="h-0 border-b border-solid border-gray-200 grow" />
+								<p className="mx-4 text-grey-600">o</p>
+								<hr className="h-0 border-b border-solid border-gray-200 grow" />
+							</div>
+							<a className="flex items-center justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 cursor-pointer rounded-lg text-gray-700 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:ring-grey-300">
+								<img
+									className="h-5 mr-2"
+									src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
+									alt=""
+								/>
+								Iniciar sesión con Google
+							</a>
 							<p className="text-sm leading-relaxed text-grey-900">
 								Aún no estas suscrito?{" "}
 								<a
