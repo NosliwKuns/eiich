@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container"
 import { Typography } from "@/components/ui/Typography"
 // import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
 import "@leenguyen/react-flip-clock-countdown/dist/index.css"
-import { FlipClockCountdown } from "./components/chatcito"
+import { FlipClockCountdown } from "./components/FlipClockCountdown"
 import { Buttom } from "@/components/ui/Buttom"
 
 export const Awards = () => {

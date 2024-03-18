@@ -1,0 +1,24 @@
+.digit_block {
+	perspective: 200px;
+	box-shadow: var(--fcc-shadow);
+}
+
+.card {
+	position: relative;
+	transform-style: preserve-3d;
+	transform-origin: bottom;
+	transform: rotateX(0);
+}
+
+.card.flipped {
+	transition: transform var(--fcc-flip-duration) ease-in-out;
+	transform: rotateX(-180deg);
+}
+
+.card_face {
+	backface-visibility: hidden;
+}
+
+.card_face_back {
+	transform: rotateX(-180deg);
+}

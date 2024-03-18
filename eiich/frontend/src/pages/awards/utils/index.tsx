@@ -1,20 +1,27 @@
-import { FlipClockCountdownTimeDelta } from "../types/awards";
+import {
+	Digit,
+	FlipClockCountdownTimeDelta,
+	FlipClockCountdownTimeDeltaFormatted,
+} from "../types/awards"
 
 export const defaultTimeDelta = {
 	total: 0,
 	days: 0,
 	hours: 0,
 	minutes: 0,
-	seconds: 0
-};
+	seconds: 0,
+}
 
-export function calcTimeDelta(target: Date | string | number): FlipClockCountdownTimeDelta {
-
+export function calcTimeDelta(
+	target: Date | string | number
+): FlipClockCountdownTimeDelta {
 	if (typeof target === "string") {
 		const parts = target.split("/")
 
 		if (parts.length !== 3) {
-			throw new Error("Formato de fecha incorrecto. Se esperaba 'dd/mm/yy'.")
+			throw new Error(
+				"Formato de fecha incorrecto. Se esperaba 'dd/mm/yy'."
+			)
 		}
 
 		const day = parseInt(parts[0], 10)
@@ -22,7 +29,9 @@ export function calcTimeDelta(target: Date | string | number): FlipClockCountdow
 		const year = parseInt(parts[2], 10)
 
 		if (isNaN(day) || isNaN(month) || isNaN(year)) {
-			throw new Error("Formato de fecha incorrecto. Se esperaban números enteros para el día, mes y año.")
+			throw new Error(
+				"Formato de fecha incorrecto. Se esperaban números enteros para el día, mes y año."
+			)
 		}
 
 		const date = new Date(year, month, day)
@@ -34,13 +43,9 @@ export function calcTimeDelta(target: Date | string | number): FlipClockCountdow
 	}
 
 	const now = new Date()
-	console.log(target)
 	const targetTime = typeof target === "number" ? target : target.getTime()
-	console.log(targetTime)
 	let timeLeft = Math.round((targetTime - now.getTime()) / 1000)
-	// timeLeft = Math.min(timeLeft, 0)
 	if (timeLeft < 0) timeLeft = 0
-	console.log(timeLeft, "timeleft")
 
 	const days = Math.floor(timeLeft / (24 * 60 * 60))
 	const hours = Math.floor((timeLeft / 3600) % 24)
@@ -52,41 +57,33 @@ export function calcTimeDelta(target: Date | string | number): FlipClockCountdow
 		days,
 		hours,
 		minutes,
-		seconds
+		seconds,
 	}
 }
 
-
-
 export function pad(n: number): Digit[] {
-	return ('0'.repeat(Math.max(0, 2 - String(n).length)) + String(n)).split('');
+	return ("0".repeat(Math.max(0, 2 - String(n).length)) + String(n)).split("")
 }
 
-export function parseTimeDelta(timeDelta: FlipClockCountdownTimeDelta): FlipClockCountdownTimeDeltaFormatted {
-	const nextTimeDelta = calcTimeDelta("24/03/2024");
-
+export function parseTimeDelta(
+	timeDelta: FlipClockCountdownTimeDelta
+): FlipClockCountdownTimeDeltaFormatted {
 	return {
 		days: {
 			current: pad(timeDelta.days),
-			next: pad(nextTimeDelta.days)
+			next: pad(timeDelta.days),
 		},
 		hours: {
 			current: pad(timeDelta.hours),
-			next: pad(nextTimeDelta.hours)
+			next: pad(timeDelta.hours),
 		},
 		minutes: {
 			current: pad(timeDelta.minutes),
-			next: pad(nextTimeDelta.minutes)
+			next: pad(timeDelta.minutes),
 		},
 		seconds: {
 			current: pad(timeDelta.seconds),
-			next: pad(nextTimeDelta.seconds)
-		}
-	};
-}
-
-export function convertToPx(n?: string | number): string | undefined {
-	if (n === undefined) return undefined;
-	if (typeof n === 'string') return n;
-	return `${n}px`;
+			next: pad(timeDelta.seconds),
+		},
+	}
 }
