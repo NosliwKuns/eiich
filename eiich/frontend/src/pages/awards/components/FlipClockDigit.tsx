@@ -1,26 +1,18 @@
 import clsx from "clsx"
-import React from "react"
-import styles from "@/pages/awards/styles/FlipClockCountdown.module.css"
-// import { Digit, FlipClockCountdownProps } from './types';
+import React, { useEffect, useState } from "react"
+import styles from "@/pages/awards/styles/flip-clock-countdown.module.css"
+import { Digit } from "../types/awards"
 
-// export interface FlipClockDigitProps {
-//   current: Digit;
-//   next: Digit;
-//   className?: string;
-//   style?: FlipClockCountdownProps['digitBlockStyle'];
-// }
+interface Props {
+	current: Digit
+	next: Digit
+}
 
-// type FlipClockDigitState = {
-//   current: Digit;
-//   next: Digit;
-// };
+export const FlipClockDigit: React.FC<Props> = ({ current, next }) => {
+	const [digit, setDigit] = useState<Props>({ current, next })
+	const [flipped, setFlipped] = useState<boolean>(false)
 
-export default function FlipClockDigit(props) {
-	const { current, next, className, style } = props
-	const [digit, setDigit] = React.useState({ current, next })
-	const [flipped, setFlipped] = React.useState(false)
-
-	React.useEffect(() => {
+	useEffect(() => {
 		if (digit.current !== current) {
 			if (digit.current === digit.next) {
 				setDigit({ ...digit, next })
@@ -29,7 +21,7 @@ export default function FlipClockDigit(props) {
 		} else {
 			setFlipped(false)
 		}
-	}, [current, next])
+	}, [current, next, digit])
 
 	const handleTransitionEnd = (): void => {
 		setDigit({ current, next })
@@ -39,7 +31,7 @@ export default function FlipClockDigit(props) {
 	return (
 		<div
 			className={clsx(
-				styles.fcc__digit_block,
+				styles.digit_block,
 				"rounded-md w-[7vw] max-w-[85px] h-full aspect-[1/1.4]"
 			)}
 		>
@@ -51,23 +43,20 @@ export default function FlipClockDigit(props) {
 			</div>
 
 			<div
-				className={clsx(styles.fcc__card, "relative w-full h-1/2", {
-					[styles.fcc__flipped]: flipped,
+				className={clsx(styles.card, "relative w-full h-1/2", {
+					[styles.flipped]: flipped,
 				})}
 				onTransitionEnd={handleTransitionEnd}
 			>
-				<div
-					className="absolute w-full h-full flex justify-center overflow-hidden bg-electric-violet-500 items-end rounded-tl-md rounded-tr-md border-b border-white text-[#eee]"
-					style={{ backfaceVisibility: "hidden" }}
-				>
+				<div className="absolute w-full h-full flex justify-center overflow-hidden bg-electric-violet-500 items-end rounded-tl-md rounded-tr-md border-b border-white text-[#eee]">
 					{digit.current}
 				</div>
 				<div
-					className="absolute w-full h-full flex justify-center overflow-hidden bg-electric-violet-400 rounded-bl-md rounded-br-md items-start text-white"
-					style={{
-						backfaceVisibility: "hidden",
-						transform: "rotateX(-180deg)",
-					}}
+					className={clsx(
+						styles.card_face,
+						styles.card_face_back,
+						"absolute w-full h-full flex justify-center overflow-hidden bg-electric-violet-400 rounded-bl-md rounded-br-md items-start text-white"
+					)}
 				>
 					{digit.next}
 				</div>
