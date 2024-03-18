@@ -1,9 +1,9 @@
 import { Header } from "@/components/Header"
 import { Container } from "@/components/ui/Container"
 import { Typography } from "@/components/ui/Typography"
-import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
+// import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
 import "@leenguyen/react-flip-clock-countdown/dist/index.css"
-// import { FlipClockCountdown } from "./components/chatcito"
+import { FlipClockCountdown } from "./components/chatcito"
 import { Buttom } from "@/components/ui/Buttom"
 
 export const Awards = () => {
@@ -71,7 +71,7 @@ export const Awards = () => {
 					<p className="text-3xl text-center font-semibold text-electric-violet-950">
 						Próxima edición
 					</p>
-					<FlipClockCountdown
+					{/* <FlipClockCountdown
 						to={new Date().getTime() + 24 * 3600 * 1000 + 5000}
 						labels={["Días", "Horas", "MINUTOS", "SEGUNDOS"]}
 						labelStyle={{
@@ -90,7 +90,8 @@ export const Awards = () => {
 						separatorStyle={{ color: "#a841ff", size: "6px" }}
 						duration={0.5}
 						className="w-fit mx-auto"
-					/>
+					/> */}
+					<FlipClockCountdown to={"24/03/2024"} />
 				</div>
 			</Container>
 		</div>

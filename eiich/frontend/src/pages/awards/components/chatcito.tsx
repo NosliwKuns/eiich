@@ -1,7 +1,7 @@
 // import styles from "@/pages/awards/styles/FlipClockCountdown.module.css"
 //
 // import clsx from "clsx"
-import React from "react"
+import React, { useCallback, useState } from "react"
 import FlipClockDigit from "./FlipClockDigit"
 // import { FlipClockCountdownProps, FlipClockCountdownState, FlipClockCountdownUnitTimeFormatted } from './types';
 import {
@@ -9,24 +9,24 @@ import {
 	// convertToPx,
 	parseTimeDelta,
 } from "@/pages/awards/utils/index"
+// import { FlipClockCountdownUnitTimeFormatted } from "@leenguyen/react-flip-clock-countdown"
 
 const defaultRenderMap = [true, true, true, true]
-const defaultLabels = ["Días", "Horas", "Minutos", "Segundos"]
+// const defaultLabels = ["Días", "Horas", "Minutos", "Segundos"]
 
 /**
  * A 3D animated flip clock countdown component for React.
  */
-export function FlipClockCountdown(props: { to: string, onTick: void, onComplete: void}) {
+export function FlipClockCountdown(props: { to: string, onComplete?: void, renderMap?: [] }) {
 	const {
 		to,
 		// className,
 		// style,
 		// children,
-		onComplete = () => {},
-		onTick = () => {},
+		onComplete = () => { },
+		// onTick = () => { },
 		// showLabels = true,
 		// showSeparators = true,
-		// labels = defaultLabels,
 		// labelStyle,
 		// digitBlockStyle,
 		// separatorStyle,
@@ -37,31 +37,45 @@ export function FlipClockCountdown(props: { to: string, onTick: void, onComplete
 		// ...other
 	} = props
 	// eslint-disable-next-line @typescript-eslint/no-use-before-define
-	const [state, setState] =
-		React.useState(constructState)
+	
 	const countdownRef = React.useRef(0)
 
-	function clearTimer() {
+	// function clearTimer() {
+	// 	window.clearInterval(countdownRef.current)
+	// }
+
+	// function constructState() {
+	// 	const timeDelta = calcTimeDelta(to)
+	// 	return {
+	// 		timeDelta,
+	// 		completed: timeDelta.total === 0,
+	// 	}
+	// }
+
+	const clearTimer = () => {
 		window.clearInterval(countdownRef.current)
 	}
 
-	function constructState() {
+	const constructState = useCallback(() => {
 		const timeDelta = calcTimeDelta(to)
+		console.log(timeDelta, to)
 		return {
 			timeDelta,
-			completed: timeDelta.total === 0,
+			completed: timeDelta.total === 0
 		}
-	}
+	}, [to])
 
-	function tick() {
+	const [state, setState] = useState(constructState)
+
+	const tick = useCallback(() => {
 		const newState = constructState()
 		setState(newState)
-		onTick(newState)
+		// onTick(newState)
 		if (newState.completed) {
 			clearTimer()
 			onComplete()
 		}
-	}
+	}, [constructState, onComplete])
 
 	React.useEffect(() => {
 		// setState(constructState());
@@ -69,7 +83,7 @@ export function FlipClockCountdown(props: { to: string, onTick: void, onComplete
 		countdownRef.current = window.setInterval(tick, 1000)
 
 		return () => clearTimer()
-	}, [to])
+	}, [tick])
 
 	// const containerStyles = React.useMemo<React.CSSProperties>(() => {
 	// 	const s = {
@@ -120,26 +134,26 @@ export function FlipClockCountdown(props: { to: string, onTick: void, onComplete
 	// }, [digitBlockStyle])
 
 	const sections = React.useMemo(() => {
+		console.log(state.timeDelta)
 		const formatted = parseTimeDelta(state.timeDelta)
 		const _renderMap =
 			renderMap.length >= 4 ? renderMap.slice(0, 4) : defaultRenderMap
-		const _labels = labels.length >= 4 ? labels.slice(0, 4) : defaultLabels
+		// const _labels = labels.length >= 4 ? labels.slice(0, 4) : defaultLabels
 		const times = Object.values(
 			formatted
 		) as FlipClockCountdownUnitTimeFormatted[]
-		const r: [FlipClockCountdownUnitTimeFormatted, string][] = []
+		const r: [FlipClockCountdownUnitTimeFormatted][] = []
 		_renderMap.forEach((show, i) => {
 			if (show) {
-				r.push([times[i], _labels[i]])
+				r.push([times[i]])
 			}
 		})
 		return r
 	}, [renderMap, state])
 
-	if (state?.completed && hideOnComplete) {
-		return <React.Fragment>{children}</React.Fragment>
-	}
-
+	// if (state?.completed && hideOnComplete) {
+	// 	return <React.Fragment>{children}</React.Fragment>
+	// }
 	return (
 		<div
 			data-testid="fcc-container"
@@ -149,11 +163,10 @@ export function FlipClockCountdown(props: { to: string, onTick: void, onComplete
 				return (
 					<React.Fragment key={`digit-block-${idx}`}>
 						<div className="relative flex gap-2">
-							{showLabels && (
-								<div className="leading-none absolute -bottom-8 left-1/2 text-lg font-normal uppercase -translate-x-1/2 text-electric-violet-950">
-									{label}
-								</div>
-							)}
+							<div className="leading-none absolute -bottom-8 left-1/2 text-lg font-normal uppercase -translate-x-1/2 text-electric-violet-950">
+								{label}
+							</div>
+
 							{item.current.map((cItem, cIdx) => (
 								<FlipClockDigit
 									key={cIdx}
