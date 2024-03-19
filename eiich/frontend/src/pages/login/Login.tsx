@@ -36,6 +36,7 @@ export const Login = () => {
 								placeholder="Ingresa tu contraseña"
 								className="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-gray-400 placeholder:text-gray-700 bg-gray-200 text-dark-gray-900 rounded-2xl"
 							/> */}
+							<input type="text" name="" id="" />
 							<label
 								htmlFor="password"
 								className="mb-2 text-sm text-start text-grey-900"
@@ -46,7 +47,7 @@ export const Login = () => {
 								id="password"
 								type="password"
 								placeholder="Ingresa tu contraseña"
-								className="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-gray-400 placeholder:text-gray-700 bg-gray-200 text-dark-gray-900 rounded-2xl"
+								className="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium focus:bg-gray-400 placeholder:text-gray-700 bg-gray-200 text-dark-gray-900 rounded-2xl"
 							/>
 							<Input />
 							<div className="flex flex-row justify-between mb-8">
