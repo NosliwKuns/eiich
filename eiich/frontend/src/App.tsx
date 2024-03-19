@@ -5,6 +5,7 @@ import {
 	Outlet,
 	Route,
 	RouterProvider,
+	useLocation,
 } from "react-router-dom"
 import { Navbar } from "./layout/Navbar"
 import Lenis from "@studio-freight/lenis"
@@ -51,13 +52,17 @@ const Root = () => {
 		requestAnimationFrame(raf)
 	}, [])
 
+	const { pathname } = useLocation()
+
+	const isAuthPage = pathname === "/iniciar-sesion" || pathname === "/registro"
+
 	return (
 		<>
-			<Navbar />
+			{!isAuthPage && <Navbar />}
 			<main>
 				<Outlet />
 			</main>
-			<Footer />
+			{!isAuthPage && <Footer />}
 		</>
 	)
 }
