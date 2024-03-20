@@ -1,9 +1,10 @@
 import { Input } from "@/components/Input"
 import { Buttom } from "@/components/ui/Buttom"
 import { Typography } from "@/components/ui/Typography"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { IoArrowBack } from "react-icons/io5"
+import { validate } from "@/validations/login"
 
 export interface Login {
 	email: string
@@ -11,10 +12,29 @@ export interface Login {
 }
 
 export const Login = () => {
-	const [value, setValue] = useState<Login>({
+	const [values, setValue] = useState<Login>({
 		email: "",
 		password: "",
 	})
+
+	const [errors, setErrors] = useState<Login>({
+		email: "",
+		password: "",
+	})
+
+	const [touched, setTouched] = useState({
+		email: false,
+		password: false,
+	})
+
+	const [isChecked, setIsChecked] = useState(false)
+
+	useEffect(() => {
+		if (touched.email || touched.password) {
+			const { errors } = validate(values, touched);
+			setErrors(errors)
+		}
+	}, [values, touched])
 
 	return (
 		<div className="relative flex bg-babyBlue min-h-screen rounded-lg py-28">
@@ -24,19 +44,42 @@ export const Login = () => {
 			>
 				<IoArrowBack /> Ir a inicio
 			</Link>
-			<div className="m-auto p-12 bg-white w-fit rounded-2xl">
+			<div className="m-auto p-12 bg-white w-fit rounded-2xl transition-all">
 				<div className="flex items-center xl:p-10">
-					<form className="flex flex-col gap-6 w-full h-full text-center bg-white rounded-3xl">
-						<Typography className="mb-2 font-extrabold text-dark-grey-900">Iniciar sesión</Typography>
-
-						<Input label="Correo electrónico*" type="email" value={value.email} setValue={setValue} />
-
-						<Input label="Contraseña*" type="password" value={value.password} setValue={setValue} />
+					<form className="flex flex-col gap-6 w-1/2 min-w-96 bg-white rounded-3xl transition-all">
+						<Typography className="mb-2 font-extrabold text-dark-grey-900 text-center">Iniciar sesión</Typography>
+						<div>
+							<Input
+								label="Correo electrónico*"
+								type="email"
+								value={values.email}
+								setValue={setValue}
+								setTouched={setTouched}
+								errors={errors}
+							/>
+							<p className={`text-[red] text-start text-[13.5px] mt-2 ${errors.email ? "h-4" : "h-[1px]"} overflow-hidden transition-all duration-300`}>{errors.email}</p>
+						</div>
+						<div>
+							<Input
+								label="Contraseña*"
+								type="password"
+								value={values.password}
+								setValue={setValue}
+								setTouched={setTouched}
+								errors={errors}
+							/>
+							<p className={`text-[red] text-start text-[13.5px] mt-2 ${errors.password ? "h-4" : "h-[1px]"} overflow-hidden transition-all duration-300`}>{errors.password}</p>
+						</div>
 
 						<div className="flex flex-row justify-between gap-6 -mt-2 text-xs items-center">
 							<label className="relative inline-flex items-center mr-3 cursor-pointer select-none">
-								<input type="checkbox" checked value="" className="sr-only peer" />
-								<div className="w-4 h-4 bg-white border-2 rounded-sm border-gray-500 peer peer-checked:border-0 peer-checked:bg-electric-violet-500">
+								<input
+									type="checkbox"
+									checked={isChecked}
+									className="sr-only peer"
+									onChange={() => setIsChecked(!isChecked)}
+								/>
+								<div className="w-4 h-4 bg-white border-[1.5px] rounded-[4px] border-gray-500 peer peer-checked:border-0 peer-checked:bg-electric-violet-500">
 									<img
 										className=""
 										src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/icons/check.png"
@@ -49,7 +92,7 @@ export const Login = () => {
 								¿Olvidaste la contraseña?
 							</a>
 						</div>
-						<Buttom className="w-full py-4">Iniciar sesión</Buttom>
+						<Buttom className="w-full py-4 text-center">Iniciar sesión</Buttom>
 						<div className="flex items-center -my-3">
 							<hr className="h-0 border-b border-solid border-gray-200 grow" />
 							<p className="mx-4 text-grey-600">ó</p>
@@ -63,7 +106,7 @@ export const Login = () => {
 							/>
 							Iniciar sesión con Google
 						</a>
-						<p className="text-sm leading-relaxed text-grey-900">
+						<p className="text-sm leading-relaxed text-center text-grey-900">
 							¿Aún no estas suscrito?{" "}
 							<Link to="/registro" className="font-bold text-electric-violet-500">
 								Suscribirse
