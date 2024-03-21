@@ -1,6 +1,10 @@
 import { CollectionConfig } from "payload/types"
 
 const Subscription: CollectionConfig = {
+	labels: {
+		plural: "Subscripciones",
+		singular: "Subscripción",
+	},
 	slug: "subscription",
 	auth: false,
 	admin: {
@@ -8,8 +12,29 @@ const Subscription: CollectionConfig = {
 	},
 	fields: [
 		{
-			name: "selectedSubscription", // required
-			type: "select", // required
+			name: "name",
+			label: "Tipo de Subscripción",
+			type: "text",
+			admin: {
+				readOnly: true,
+				condition: (data) => {
+					if (data.selectSubscription && data.selectSubscription.includes("Plan Mensual")) {
+						data.name = "Plan Mensual"
+						return true
+					}
+					if (data.selectSubscription && data.selectSubscription.includes("Plan Anual")) {
+						data.name = "Plan Anual"
+						return true
+					} else {
+						return false
+					}
+				},
+			},
+		},
+		{
+			name: "selectSubscription",
+			label: "Seleccionar tipo de subscripción",
+			type: "select",
 			hasMany: true,
 			unique: true,
 			required: true,
@@ -26,30 +51,36 @@ const Subscription: CollectionConfig = {
 		},
 		{
 			name: "valueToPay",
+			label: "Valor a Pagar",
 			type: "number",
+			admin: {
+				readOnly: false,
+			},
 		},
 		{
 			name: "durationMonth",
+			label: "Duracion en Meses",
 			type: "number",
 			admin: {
+				readOnly: true,
 				condition: (data) => {
-					//console.log(data.selectedSubscription)
-					if (data.selectedSubscription && data.selectedSubscription.includes("Plan Mensual")) {
+					if (data.selectSubscription && data.selectSubscription.includes("Plan Mensual")) {
 						data.durationMonth = 1
-						data.valueToPay = 10
-
+						return true
+					}
+					if (data.selectSubscription && data.selectSubscription.includes("Plan Anual")) {
+						data.durationMonth = 12
 						return true
 					} else {
-						data.durationMonth = 12
-						data.valueToPay = 100
 						return false
 					}
 				},
 			},
 		},
 		{
-			name: "selectedTypeMoney", // required
-			type: "select", // required
+			name: "selectedTypeMoney",
+			label: "Seleccionar tipo de moneda",
+			type: "select",
 			hasMany: true,
 			required: true,
 			options: [
@@ -65,15 +96,13 @@ const Subscription: CollectionConfig = {
 		},
 		{
 			name: "symbolMoney",
-			type: "text",
-		},
-		{
-			name: "moneyType",
+			label: "Simbolo de moneda",
 			type: "text",
 			admin: {
+				readOnly: true,
 				condition: (data) => {
 					console.log(data.selectedTypeMoney)
-					if (data.selectedTypeMoney.includes("Dolares")) {
+					if (data.selectedTypeMoney && data.selectedTypeMoney.includes("Dolares")) {
 						data.symbolMoney = "$"
 						return true
 					} else {
@@ -85,6 +114,7 @@ const Subscription: CollectionConfig = {
 		},
 		{
 			name: "content",
+			label: "Contenido",
 			type: "text",
 			required: true,
 		},

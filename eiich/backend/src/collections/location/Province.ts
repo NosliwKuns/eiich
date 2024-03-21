@@ -24,6 +24,9 @@ const Province: CollectionConfig = {
 			label: "Distrito",
 			type: "relationship",
 			relationTo: "district",
+			admin: {
+				readOnly: true
+			},
 			hasMany: true,
 		},
 		{
@@ -49,16 +52,12 @@ const Province: CollectionConfig = {
 								collection: "department",
 								req,
 							})
-							const hasProvince: any = departments.docs.find(
-								(doc) => doc.id === data.department[0]
-							)
+							const hasProvince: any = departments.docs.find((doc) => doc.id === data.department[0])
 							await req.payload.db.updateOne({
 								collection: "department",
 								data: {
 									province: hasProvince.province
-										? hasProvince.province.concat(
-												province.id
-										  )
+										? hasProvince.province.concat(province.id)
 										: [province.id],
 								},
 								id: data.department[0],
@@ -70,7 +69,7 @@ const Province: CollectionConfig = {
 										await req.payload.db.updateOne({
 											collection: "department",
 											data: {
-												province: element.province.filter(item => item !== province.id),
+												province: element.province.filter((item) => item !== province.id),
 											},
 											id: element.id,
 											req: req,
@@ -88,10 +87,7 @@ const Province: CollectionConfig = {
 		beforeChange: [
 			({ data }) => {
 				if (data.department && data.department.length > 1) {
-					throw new APIError(
-						'El campo "Departamento" solo puede tener un valor',
-						403
-					)
+					throw new APIError('El campo "Departamento" solo puede tener un valor', 403)
 				}
 			},
 		],
@@ -102,13 +98,33 @@ const Province: CollectionConfig = {
 						collection: "department",
 						req,
 					})
-					
+
 					await Promise.all(
 						allDepartments.docs.map(async (element) => {
 							await req.payload.db.updateOne({
 								collection: "department",
 								data: {
-									province: element.province.filter(item => item !== doc.id),
+									province: element.province.filter((item) => item !== doc.id),
+								},
+								id: element.id,
+								req: req,
+							})
+						})
+					)
+				}
+
+				if (doc.district) {
+					const allDistrict: any = await req.payload.db.find({
+						collection: "district",
+						req,
+					})
+
+					await Promise.all(
+						allDistrict.docs.map(async (element) => {
+							await req.payload.db.updateOne({
+								collection: "district",
+								data: {
+									province: element.province.filter((item) => item !== doc.id),
 								},
 								id: element.id,
 								req: req,
