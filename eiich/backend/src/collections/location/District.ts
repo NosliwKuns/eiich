@@ -1,31 +1,30 @@
 import { CollectionConfig } from "payload/types"
 
-const Distrito: CollectionConfig = {
+const District: CollectionConfig = {
     labels: {
         plural: "Distritos",
         singular: "Distrito"
     },
-	slug: "distrito",
+	slug: "district",
 	auth: false,
 	admin: {
-		useAsTitle: "nombre",
+		useAsTitle: "name",
 	},
 	fields: [
         {
-			name: "nombre",
+			name: "name",
             label: "Nombre",
 			type: "text",
 			required: true,
 		},
 		{
+			name: "province",
             label: "Provincia",
-			name: "provincia",
 			type: "relationship",
-			relationTo: "provincia",
+			relationTo: "province",
 			hasMany: true,
-            
 		},
     ]
 }
 
-export default Distrito
+export default District

@@ -9,9 +9,9 @@ import { buildConfig } from "payload/config"
 import Users from "./collections/Users"
 import Subscription from "./collections/Subcription"
 import Customer from "./collections/Customer"
-import Provincia from "./collections/location/Provincia"
-import Distrito from "./collections/location/Distrito"
-import Departamento from "./collections/location/departamento"
+import Province from "./collections/location/Province"
+import District from "./collections/location/District"
+import Department from "./collections/location/Department"
 
 export default buildConfig({
 	admin: {
@@ -19,7 +19,7 @@ export default buildConfig({
 		bundler: webpackBundler(),
 	},
 	editor: slateEditor({}),
-	collections: [Users, Subscription, Customer, Departamento, Provincia, Distrito],
+	collections: [Users, Subscription, Customer, Department, Province, District],
 	typescript: {
 		outputFile: path.resolve(__dirname, "payload-types.ts"),
 	},
