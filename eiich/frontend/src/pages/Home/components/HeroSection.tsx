@@ -109,7 +109,7 @@ export const HeroSection = () => {
 							beneficios exclusivos que tenemos.
 						</span>
 					</p>
-					<Buttom className="px-10 py-4">Quiero se suscriptor</Buttom>
+					<Buttom to="/registro" className="px-10 py-4">Quiero ser suscriptor</Buttom>
 				</div>
 				<div className="w-full relative aspect-square my-auto">
 					<img
