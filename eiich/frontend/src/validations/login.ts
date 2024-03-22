@@ -1,7 +1,7 @@
-import { LoginTouched } from "@/components/Input";
+import { Touched } from "@/components/Input";
 import { Login } from "@/pages/login/Login";
 
-export const validate = (values: Login, touched: LoginTouched) => {
+export const validate = (values: Login, touched: Touched) => {
     let valid = true;
     const errors = { email: "", password: "" };
 

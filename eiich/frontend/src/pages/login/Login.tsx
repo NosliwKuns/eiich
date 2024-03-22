@@ -1,4 +1,4 @@
-import { Input } from "@/components/Input"
+import { Input, Touched } from "@/components/Input"
 import { Buttom } from "@/components/ui/Buttom"
 import { Typography } from "@/components/ui/Typography"
 import { useEffect, useState } from "react"
@@ -22,7 +22,7 @@ export const Login = () => {
 		password: "",
 	})
 
-	const [touched, setTouched] = useState({
+	const [touched, setTouched] = useState<Touched>({
 		email: false,
 		password: false,
 	})
@@ -31,7 +31,7 @@ export const Login = () => {
 
 	useEffect(() => {
 		if (touched.email || touched.password) {
-			const { errors } = validate(values, touched);
+			const { errors } = validate(values, touched)
 			setErrors(errors)
 		}
 	}, [values, touched])
@@ -47,28 +47,44 @@ export const Login = () => {
 			<div className="m-auto p-12 bg-white w-fit rounded-2xl transition-all">
 				<div className="flex items-center xl:p-10">
 					<form className="flex flex-col gap-6 w-1/2 min-w-96 bg-white rounded-3xl transition-all">
-						<Typography className="mb-2 font-extrabold text-dark-grey-900 text-center">Iniciar sesión</Typography>
+						<Typography className="mb-2 font-extrabold text-dark-grey-900 text-center">
+							Iniciar sesión
+						</Typography>
 						<div>
 							<Input
 								label="Correo electrónico*"
 								type="email"
+								name="email"
 								value={values.email}
 								setValue={setValue}
 								setTouched={setTouched}
 								errors={errors}
 							/>
-							<p className={`text-[red] text-start text-[13.5px] mt-2 ${errors.email ? "h-4" : "h-[1px]"} overflow-hidden transition-all duration-300`}>{errors.email}</p>
+							<p
+								className={`text-[red] text-start text-[13.5px] mt-2 ${
+									errors.email ? "h-4" : "h-[1px]"
+								} overflow-hidden transition-all duration-300`}
+							>
+								{errors.email}
+							</p>
 						</div>
 						<div>
 							<Input
 								label="Contraseña*"
 								type="password"
+								name="password"
 								value={values.password}
 								setValue={setValue}
 								setTouched={setTouched}
 								errors={errors}
 							/>
-							<p className={`text-[red] text-start text-[13.5px] mt-2 ${errors.password ? "h-4" : "h-[1px]"} overflow-hidden transition-all duration-300`}>{errors.password}</p>
+							<p
+								className={`text-[red] text-start text-[13.5px] mt-2 ${
+									errors.password ? "h-4" : "h-[1px]"
+								} overflow-hidden transition-all duration-300`}
+							>
+								{errors.password}
+							</p>
 						</div>
 
 						<div className="flex flex-row justify-between gap-6 -mt-2 text-xs items-center">
