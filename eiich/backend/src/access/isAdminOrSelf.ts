@@ -1,9 +1,9 @@
 import { Access } from "payload/config";
 
-export const itsadminorself:Access = ({ req: {user} })=> {
+export const isAdminOrSelf:Access = ({ req: { user } })=> {
     if (user){
         if (user.roles.includes("Admin")) {
-            return true;
+            return true
           }
         return {
             id: {
