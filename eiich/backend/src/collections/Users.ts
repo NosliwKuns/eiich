@@ -97,6 +97,12 @@ const Users: CollectionConfig = {
 			unique: true,
 		},
 		{
+			name: "phoneNumber",
+			label: "Numero de celular",
+			type: "number",
+			unique: true,
+		},
+		{
 			name: "district",
 			label: "Distrito",
 			type: "relationship",

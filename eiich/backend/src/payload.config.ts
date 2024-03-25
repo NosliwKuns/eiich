@@ -11,14 +11,27 @@ import Subscription from "./collections/Subcription"
 import Province from "./collections/location/Province"
 import District from "./collections/location/District"
 import Department from "./collections/location/Department"
+import CustomMinimalView from "./views/CustomMinimalView"
+
+import Draw from "./collections/Draw"
+
+
 
 export default buildConfig({
 	admin: {
 		user: Users.slug,
 		bundler: webpackBundler(),
+		components: {
+			views: {
+			  CustomMinimalView: {
+				Component: CustomMinimalView,
+				path: '/users-draws',
+			  },
+			},
+		}
 	},
 	editor: slateEditor({}),
-	collections: [Users, Subscription, Department, Province, District],
+	collections: [Users, Subscription, Department, Province, District, Draw],
 	typescript: {
 		outputFile: path.resolve(__dirname, "payload-types.ts"),
 	},
