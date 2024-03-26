@@ -14,6 +14,7 @@ import { Footer } from "./layout/Footer"
 import { Benefits } from "./pages/benefits/Benefits"
 import { Awards } from "./pages/awards/Awards"
 import { Winners } from "./pages/winners/Winners"
+import { Profile } from "./pages/profile/Profile"
 import { Login } from "./pages/login/Login"
 import { Register } from "./pages/register/Register"
 
@@ -27,6 +28,7 @@ function App() {
 				<Route path="/ganadores" element={<Winners />} />
 				<Route path="/iniciar-sesion" element={<Login />} />
 				<Route path="/registro" element={<Register />} />
+				<Route path="/perfil" element={<Profile />} />
 			</Route>
 		)
 	)
