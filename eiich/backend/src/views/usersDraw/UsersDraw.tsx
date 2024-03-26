@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
-import { useConfig } from 'payload/components/utilities';
-import payload from 'payload';
-import './CustomMinimalView.css';
+import React, { useState, useEffect } from 'react'
+import "./users-draw.css"
 
-const CustomMinimalView: React.FC = () => {
-  const {
-    routes: { admin: adminRoute },
-  } = useConfig();
+export const UsersDraw: React.FC = () => {
 
-  const [userId, setUserId] = useState('');
-  const [users, setUsers] = useState([]);
+  const currentUrl = window.location.href
+  const urlParts = currentUrl.split('/')
+  const id = urlParts[urlParts.length - 1]
+
+  console.log(id);
+
+  const [userId, setUserId] = useState('')
+  const [users, setUsers] = useState([])
 
   const usuariosActivos = async () => {
     try {
-      const response = await fetch(`/api/Draw/getUsersByDrawId/${userId}`); // Reemplaza '/api/getUsersByDrawId/${userId}' con la ruta correcta de tu API
+      const response = await fetch(`/api/Draw/getUsersByDrawId/${id}`); // Reemplaza '/api/getUsersByDrawId/${userId}' con la ruta correcta de tu API
       const responseData = await response.json()
+      console.log(responseData);
       setUsers(responseData);
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.error('Error fetching users:', error)
     }
-  };
+  }
+
+  useEffect(() => {
+    usuariosActivos()
+  }, [])
   return (
     <div>
-      <input
-        type="text"
-        value={userId}
-        onChange={(e) => setUserId(e.target.value)}
-      />
-      <button onClick={usuariosActivos}>Buscar</button>
       <div className="lista">
           <div>
             <table>
@@ -59,5 +59,3 @@ const CustomMinimalView: React.FC = () => {
     </div>
   );
 };
-
-export default CustomMinimalView;

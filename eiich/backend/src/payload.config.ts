@@ -11,11 +11,10 @@ import Subscription from "./collections/Subcription"
 import Province from "./collections/location/Province"
 import District from "./collections/location/District"
 import Department from "./collections/location/Department"
-import CustomMinimalView from "./views/CustomMinimalView"
-
 import Draw from "./collections/Draw"
 
 
+import { UsersDraw } from "./views/usersDraw/UsersDraw"
 
 export default buildConfig({
 	admin: {
@@ -23,9 +22,9 @@ export default buildConfig({
 		bundler: webpackBundler(),
 		components: {
 			views: {
-			  CustomMinimalView: {
-				Component: CustomMinimalView,
-				path: '/users-draws',
+				UsersDraw: {
+				Component: UsersDraw,
+				path: '/users-draw',
 			  },
 			},
 		}

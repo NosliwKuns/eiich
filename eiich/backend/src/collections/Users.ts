@@ -101,6 +101,7 @@ const Users: CollectionConfig = {
 			label: "Numero de celular",
 			type: "number",
 			unique: true,
+			required: false
 		},
 		{
 			name: "district",
@@ -165,7 +166,7 @@ const Users: CollectionConfig = {
 			admin: {
 				readOnly: true,
 			},
-			defaultValue: "activado",
+			defaultValue: "activo",
 		},
 	],
 	// hooks: {
