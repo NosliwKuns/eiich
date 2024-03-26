@@ -43,9 +43,7 @@ export const HeroSection = () => {
 		function move() {
 			curX.current += (tgX.current - curX.current) / 20
 			curY.current += (tgY.current - curY.current) / 20
-			interBubble!.style.transform = `translate(${Math.round(
-				curX.current
-			)}px, ${Math.round(curY.current)}px)`
+			interBubble!.style.transform = `translate(${Math.round(curX.current)}px, ${Math.round(curY.current)}px)`
 			requestAnimationFrame(move)
 		}
 
@@ -58,25 +56,25 @@ export const HeroSection = () => {
 			parX.current = event.clientX
 			parY.current = event.clientY
 
-			fridge!.style.transform = `translate(${
-				-35 - Math.round(parX.current) / sFridge
-			}%, ${-50 - Math.round(parY.current) / sFridge}% )`
+			fridge!.style.transform = `translate(${-35 - Math.round(parX.current) / sFridge}%, ${
+				-50 - Math.round(parY.current) / sFridge
+			}% )`
 
-			washMach!.style.transform = `translate(${
-				-84 + Math.round(parX.current) / sWashMach
-			}%, ${-30 + Math.round(parY.current) / sWashMach}% )`
+			washMach!.style.transform = `translate(${-84 + Math.round(parX.current) / sWashMach}%, ${
+				-30 + Math.round(parY.current) / sWashMach
+			}% )`
 
-			phone!.style.transform = `translate(${
-				-55 - Math.round(parX.current) / sPhone
-			}%, ${-20 - Math.round(parY.current) / sPhone}% )`
+			phone!.style.transform = `translate(${-55 - Math.round(parX.current) / sPhone}%, ${
+				-20 - Math.round(parY.current) / sPhone
+			}% )`
 
-			microo!.style.transform = `translate(${
-				-26 + Math.round(parX.current) / sMicroo
-			}%, ${10 + Math.round(parY.current) / sMicroo}% )`
+			microo!.style.transform = `translate(${-26 + Math.round(parX.current) / sMicroo}%, ${
+				10 + Math.round(parY.current) / sMicroo
+			}% )`
 
-			camera!.style.transform = `translate(${
-				-82.5 + Math.round(parX.current) / sCamera
-			}%, ${20 + Math.round(parY.current) / sCamera}% )`
+			camera!.style.transform = `translate(${-82.5 + Math.round(parX.current) / sCamera}%, ${
+				20 + Math.round(parY.current) / sCamera
+			}% )`
 		}
 
 		window.addEventListener("mousemove", handleMouseMove)
@@ -91,25 +89,21 @@ export const HeroSection = () => {
 		}
 	}, [interBubbleRef, tgX, tgY, parallaxRef, cameraRef, parX, parY])
 	return (
-		<section
-			ref={parallaxRef}
-			className="h-screen max-h-[800px] overflow-hidden relative"
-		>
-			<Container className="grid grid-cols-2 z-10 relative h-full">
-				<div className="flex flex-col justify-center gap-8 pl-20 pr-16">
-					<Typography>Ganar nunca fue tan fácil</Typography>
-					<p className="text-sm font-normal">
+		<section ref={parallaxRef} className="lg:h-screen lg:max-h-[800px] overflow-hidden relative">
+			<Container className="grid lg:grid-cols-2 z-10 relative h-full">
+				<div className="flex flex-col justify-center pt-28 gap-8 md:px-28 lg:pl-20 lg:pr-16 border border-red-500">
+					<Typography className="text-center lg:text-start">Ganar nunca fue tan fácil</Typography>
+					<p className="text-sm font-normal text-center lg:text-start">
 						<span>
-							Únete a nosotros y descubre cómo puedes convertirte
-							en uno de nuestros afortunados ganadores.
+							Únete a nosotros y descubre cómo puedes convertirte en uno de nuestros afortunados
+							ganadores.
 						</span>
 						<br />
-						<span>
-							¿Qué esperas para inscribirte? Aprovecha los
-							beneficios exclusivos que tenemos.
-						</span>
+						<span>¿Qué esperas para inscribirte? Aprovecha los beneficios exclusivos que tenemos.</span>
 					</p>
-					<Buttom to="/registro" className="px-10 py-4">Quiero ser suscriptor</Buttom>
+					<Buttom to="/registro" className="px-10 py-4 mx-auto lg:mx-0">
+						Quiero ser suscriptor
+					</Buttom>
 				</div>
 				<div className="w-full relative aspect-square my-auto">
 					<img
@@ -145,19 +139,14 @@ export const HeroSection = () => {
 				</div>
 			</Container>
 
-			<div
-				className={`${styles.gradientsContainer} w-full h-full absolute top-0 overflow-hidden`}
-			>
+			<div className={`${styles.gradientsContainer} w-full h-full absolute top-0 overflow-hidden`}>
 				<Goo className="w-full h-full" intensity="strong">
 					<div className={`${styles.g1} absolute opacity-100`}></div>
 					<div className={`${styles.g2} absolute opacity-100`}></div>
 					<div className={`${styles.g3} absolute opacity-100`}></div>
 					<div className={`${styles.g4} absolute opacity-100`}></div>
 					<div className={`${styles.g5} absolute opacity-100`}></div>
-					<div
-						ref={interBubbleRef}
-						className={`${styles.interactive} absolute opacity-100`}
-					></div>
+					<div ref={interBubbleRef} className={`${styles.interactive} absolute opacity-100`}></div>
 				</Goo>
 			</div>
 		</section>
