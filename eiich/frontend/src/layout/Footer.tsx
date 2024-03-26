@@ -6,7 +6,7 @@ export const Footer = () => {
 	return (
 		<footer className="bg-[#0f0730] text-white text-sm mt-12">
 			<Container>
-				<div className="flex justify-between py-12">
+				<div className="flex flex-col md:flex-row gap-12 justify-between py-12">
 					<h1 className="text-white text-6xl">Eiich</h1>
 					<div>
 						<h4 className="text-vividIndigo mb-3 text-[17px] font-semibold">
@@ -44,14 +44,14 @@ export const Footer = () => {
 						</ul>
 					</div>
 					<div>
-						<a href="#" className="flex flex-col items-center group">
+						<a href="#" className="flex flex-col md:items-center group">
 							<ComplaintsBook
 								className="fill-white group-hover:fill-vividIndigo transition-colors"
 								secondColor="yellow"
 								height={35}
 								width={35}
 							/>
-							<span className="text-center group-hover:text-vividIndigo transition-colors">
+							<span className="md:text-center group-hover:text-vividIndigo transition-colors">
 								Libro de <br /> reclamaciones{" "}
 							</span>
 						</a>

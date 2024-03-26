@@ -46,18 +46,16 @@ export const AwardsSection = () => {
   }, [])
 
   return (
-    <section className="mt-12">
-      <Container>
-        <Typography className="text-center">
-          Premios semanales
-        </Typography>
-        <div ref={containerRef} className="h-[175vh] relative overflow-hidden flex gap-[2vw] p-[2vw] mt-12">
-          <Column images={[imgs[0], imgs[1], imgs[2], imgs[0]]} y={y} />
-          <Column images={[imgs[3], imgs[4], imgs[5], imgs[3]]} y={y2} />
-          <Column images={[imgs[6], imgs[7], imgs[8], imgs[6]]} y={y3} />
-          <Column images={[imgs[9], imgs[10], imgs[11], imgs[9]]} y={y4} />
-        </div>
-      </Container>
-    </section>
+		<section className="mt-12">
+			<Container>
+				<Typography className="text-center">Premios semanales</Typography>
+				<div ref={containerRef} className="h-[175vh] relative overflow-hidden flex gap-[2vw] p-[2vw] mt-12">
+					<Column className="w-full md:w-1/2" images={[imgs[0], imgs[1], imgs[2], imgs[0]]} y={y} />
+					<Column className="w-1/2 hidden md:flex" images={[imgs[3], imgs[4], imgs[5], imgs[3]]} y={y2} />
+					<Column className="hidden lg:flex w-1/2" images={[imgs[6], imgs[7], imgs[8], imgs[6]]} y={y3} />
+					<Column className="hidden lg:flex w-1/2" images={[imgs[9], imgs[10], imgs[11], imgs[9]]} y={y4} />
+				</div>
+			</Container>
+		</section>
   )
 }
