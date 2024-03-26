@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import "./users-draw.css"
+import './users-draw.css'
+import { Button } from "payload/components/elements"
 
 export const UsersDraw: React.FC = () => {
 
@@ -28,9 +29,10 @@ export const UsersDraw: React.FC = () => {
   }, [])
   return (
     <div>
-      <div className="lista">
+      <div>
+      <Button el="link" to={`/admin/collections/draw`}>Regresar</Button>
           <div>
-            <table>
+            <table className='lista'>
               <thead>
                 <tr>
                   <td scope="col">N</td>

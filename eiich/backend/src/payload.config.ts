@@ -12,9 +12,11 @@ import Province from "./collections/location/Province"
 import District from "./collections/location/District"
 import Department from "./collections/location/Department"
 import Draw from "./collections/Draw"
-
+import Product from "./collections/product/Product"
+import Category from "./collections/product/Category"
 
 import { UsersDraw } from "./views/usersDraw/UsersDraw"
+
 
 export default buildConfig({
 	admin: {
@@ -30,7 +32,7 @@ export default buildConfig({
 		}
 	},
 	editor: slateEditor({}),
-	collections: [Users, Subscription, Department, Province, District, Draw],
+	collections: [Users, Subscription, Department, Province, District, Draw, Category, Product],
 	typescript: {
 		outputFile: path.resolve(__dirname, "payload-types.ts"),
 	},

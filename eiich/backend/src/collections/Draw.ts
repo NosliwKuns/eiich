@@ -2,6 +2,7 @@ import { CollectionConfig } from "payload/types"
 import Users from "./Users"
 import payload from "payload"
 import { LinkUsersDraw } from "../components/LinkUsersDraw"
+import { getUsersByDrawId } from "../api/getUsersByDrawId"
 
 const Draw: CollectionConfig = {
 	labels: {
@@ -100,31 +101,7 @@ const Draw: CollectionConfig = {
 		{
 			path: "/getUsersByDrawId/:id",
 			method: "get",
-			handler: async (req, res, next) => {
-				try {
-					const { params } = req
-					const result = await payload.findByID({
-						collection: "draw", // required
-						id: params.id, // required
-					})
-					if (Array.isArray(result.users)) {
-						// Verifica si result.users es un array
-						const usersData = result.users.map((user) => ({
-							name: user.name,
-							lastName: user.lastName,
-							email: user.email,
-							phoneNumber: user.phoneNumber,
-							identificationDocumentValue:
-								user.identificationDocumentValue,
-						}))
-						return res.json(usersData)
-					} else {
-						return res.json([]) // O devuelve un array vacío si no hay usuarios
-					}
-				} catch (error) {
-					return res.status(403).send(error)
-				}
-			},
+			handler: getUsersByDrawId
 		},
 	],
 }

@@ -1,4 +1,4 @@
-table {
+.lista {
 	border-collapse: collapse;
 	border: 2px solid rgb(140 140 140);
 	font-family: sans-serif;
@@ -6,35 +6,35 @@ table {
 	letter-spacing: 1px;
 }
 
-caption {
+.lista caption {
 	caption-side: bottom;
 	padding: 10px;
 	font-weight: bold;
 }
 
-thead,
-tfoot {
+.lista thead,
+.lista tfoot {
 	background-color: rgb(228 240 245);
 }
 
-th,
-td {
+.lista th,
+.lista td {
 	border: 1px solid rgb(160 160 160);
 	padding: 8px 10px;
 }
 
-td:last-of-type {
+.lista td:last-of-type {
 	text-align: center;
 }
 
-tbody > tr:nth-of-type(even) {
+.lista tbody > .lista tr:nth-of-type(even) {
 	background-color: rgb(237 238 242);
 }
 
-tfoot th {
+.lista tfoot th {
 	text-align: right;
 }
 
-tfoot td {
+.lista tfoot td {
 	font-weight: bold;
 }
