@@ -1,6 +1,4 @@
-import { Header } from "@/components/Header";
 import { Container } from "@/components/ui/Container";
-import { Typography } from "@/components/ui/Typography";
 import { Data } from "./components/Data";
 import { EditData } from "./components/EditData";
 
