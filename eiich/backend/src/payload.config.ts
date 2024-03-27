@@ -16,6 +16,7 @@ import Product from "./collections/product/Product"
 import Category from "./collections/product/Category"
 
 import { UsersDraw } from "./views/usersDraw/UsersDraw"
+import Media from "./collections/media/Media"
 
 
 export default buildConfig({
@@ -32,7 +33,7 @@ export default buildConfig({
 		}
 	},
 	editor: slateEditor({}),
-	collections: [Users, Subscription, Department, Province, District, Draw, Category, Product],
+	collections: [Users, Subscription, Department, Province, District, Draw, Category, Product, Media],
 	typescript: {
 		outputFile: path.resolve(__dirname, "payload-types.ts"),
 	},
