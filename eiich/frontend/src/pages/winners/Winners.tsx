@@ -8,7 +8,7 @@ const winners:[] = [<Winner/>, <Winner/>, <Winner/>, <Winner/>];
 
 export const Winners = () => {
   return (
-    <div className="min-h-[calc(100vh-400px)] pb-10">
+		<div className="min-h-[calc(100vh-394px)] pb-8">
       <Header>
         <Typography className="px-40 text-center">Ganadores</Typography>
       </Header>
