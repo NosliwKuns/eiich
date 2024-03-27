@@ -9,7 +9,7 @@ export const PlansSection = () => {
         <Typography className="text-center">
           Únete a nuestros planes
         </Typography>
-        <div className="mt-12 bg-[#f3f3ff] px-[2vw] py-16 flex justify-center gap-[6vw]">
+        <div className="mt-12 bg-babyBlue w-[calc(100%+32px)] md:w-full -ml-4 md:ml-0 px-4 md:px-[2vw] py-16 flex flex-wrap justify-center gap-[6vw]">
           <PlansCard planType="Plan Mensual" planPrice={10}>
             Participas en todos los premios
             vigentes que estén disponibles

@@ -1,10 +1,11 @@
+import { NavLinks } from "@/components/NavLinks"
 import { Buttom } from "@/components/ui/Buttom"
 import { Container } from "@/components/ui/Container"
 import { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
 
 export const Navbar = () => {
 	const [scrolled, setScrolled] = useState(false)
+	const [isOpened, setIsOpened] = useState(false)
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -19,50 +20,63 @@ export const Navbar = () => {
 		}
 	}, [])
 
-	const links = [
-		{ id: "1", path: "/", title: "Inicio" },
-		{ id: "2", path: "/beneficios", title: "Beneficios" },
-		{ id: "3", path: "/premios", title: "Premios" },
-		{ id: "4", path: "/ganadores", title: "Ganadores" }
-	]
+	const handleOnBlur = () => {
+		setIsOpened(false)
+	}
+
+	const handleOnClick = () => {
+		if (!isOpened) {
+			setIsOpened(true)
+		} else {
+			setIsOpened(false)
+		}
+	}
 
 	return (
 		<header
-			className={`fixed w-full z-[999] transition-all duration-300 ${
-				scrolled ? "bg-white" : "bg-transparent"
-			}`}
+			className={`fixed w-full z-[999] transition-all duration-300 ${scrolled ? "bg-white" : "bg-transparent"}`}
 		>
 			<Container>
-				<nav className="flex items-center justify-between py-4 text-electric-violet-950">
+				<nav className="relative flex items-center justify-between py-4 text-electric-violet-950">
 					<h1 className="text-5xl">Eiich</h1>
-					<ul className="flex gap-8 font-semibold text-sm">
-						{links.map((link) => (
-							<li key={link.id}>
-								<NavLink
-									to={link.path}
-									className={({ isActive }) =>
-										`${
-											isActive && "text-vividIndigo"
-										} group relative cursor-pointer hover:text-vividIndigo`
-									}
-								>
-									{({ isActive }) => (
-										<>
-											{link.title}
-											<span className="absolute top-1/2 left-0 w-full h-full"></span>
-											<span
-												className={` ${
-													isActive &&
-													"bg-vividIndigo/80"
-												} absolute bottom-[-5px] left-0 w-full h-1 rounded-full group-hover:bg-vividIndigo/80 transition-colors`}
-											></span>
-										</>
-									)}
-								</NavLink>
-							</li>
-						))}
-					</ul>
-					<Buttom to="/iniciar-sesion" className="px-6 py-3">Iniciar Sesión</Buttom>
+
+					<NavLinks />
+
+					<Buttom to="/iniciar-sesion" className="hidden lg:block px-6 py-3">
+						Iniciar Sesión
+					</Buttom>
+					<button
+						onBlur={handleOnBlur}
+						onClick={handleOnClick}
+						className={`relative h-10 ${
+							isOpened ? "px-2" : ""
+						} w-10 flex flex-col gap-2 justify-center aspect-square transition-all`}
+					>
+						<span
+							className={`${
+								isOpened && "rotate-[45deg] w-[38px]"
+							} origin-left bg-electric-violet-950 block w-full h-[5px] rounded-full transition-transform`}
+						></span>
+						<span
+							className={`bg-electric-violet-950 block ${
+								isOpened ? "w-1" : "w-full"
+							} h-[5px] rounded-full mx-auto transition-all`}
+						></span>
+						<span
+							className={`${
+								isOpened && "-rotate-[45deg] w-[38px]"
+							} origin-left bg-electric-violet-950 block w-full h-[5px] rounded-full transition-transform`}
+						></span>
+					</button>
+					<div
+						className={`${
+							isOpened ? "h-36 border border-electric-violet-500" : "h-0"
+						} absolute right-0 bottom-0 lg:hidden translate-y-[100%] shadow-xl bg-white rounded-lg overflow-hidden transition-all duration-300`}
+					>
+						<div className="p-4">
+							<NavLinks isMovil />
+						</div>
+					</div>
 				</nav>
 			</Container>
 		</header>
