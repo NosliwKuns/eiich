@@ -14,21 +14,16 @@ const Draw: CollectionConfig = {
 	admin: {
 		useAsTitle: "name",
 	},
-	upload: {
-		staticURL: "/media",
-		staticDir: "media",
-		imageSizes: [
-			{
-				name: "ImagendeSorteo",
-				width: 500,
-				height: 600,
-				position: "centre",
-			},
-		],
-		adminThumbnail: "thumbnail",
-		mimeTypes: ["image/*"],
-	},
 	fields: [
+		{
+			name: 'imageDraw',
+			label: "Subir una imagen del premio",
+			type: 'upload',
+			relationTo: 'media',
+			filterOptions: {
+				mimeType: { contains: 'image' },
+			  },
+		},
 		{
 			name: "link",
 			type: "ui",

@@ -11,21 +11,16 @@ const Product: CollectionConfig = {
 	admin: {
 		useAsTitle: "name",
 	},
-	upload: {
-		staticURL: "/media",
-		staticDir: "media",
-		imageSizes: [
-			{
-				name: "ImagendeProducto",
-				width: 500,
-				height: 600,
-				position: "centre",
-			},
-		],
-		adminThumbnail: "thumbnail",
-		mimeTypes: ["image/*"],
-	},
 	fields: [
+		{
+			name: 'imageProduct',
+			label: "Subir una imagen del Producto",
+			type: 'upload',
+			relationTo: 'media',
+			filterOptions: {
+				mimeType: { contains: 'image' },
+			  },
+		},
 		{
 			name: "name",
 			label: "Titulo",
