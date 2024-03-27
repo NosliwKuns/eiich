@@ -16,6 +16,7 @@ export const Data = () => {
         />
         <div>
           <h2 className="text-xl font-semibold">Fernando</h2>
+          <h3 className="text-gray-600">74687417</h3>
           <h3 className="text-gray-600">efe@gmail.com</h3>
           <p> +51 957 719 787</p>
         </div>

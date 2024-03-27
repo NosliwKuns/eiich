@@ -6,9 +6,10 @@ interface Props {
 	className?: string
 	to?: string
 	type?: "submit" | "reset" | "button"
+	onClick?: () => void
 }
 
-export const Buttom: React.FC<Props> = ({ children, className = "", to = "#", type }) => {
+export const Buttom: React.FC<Props> = ({ children, className = "", to = "#", type, onClick }) => {
 	if (!type) {
 		return (
 			<Link
@@ -26,6 +27,7 @@ export const Buttom: React.FC<Props> = ({ children, className = "", to = "#", ty
 		return (
 			<button
 				type={type}
+				onClick={onClick}
 				className={`relative w-fit rounded-lg group font-medium text-white text-sm inline-block ${className}`}
 			>
 				<span className="absolute top-0 left-0 w-full h-full rounded-lg opacity-50 filter blur-sm bg-gradient-to-br from-electricPurple to-vividIndigo"></span>
