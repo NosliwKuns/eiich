@@ -89,9 +89,9 @@ export const HeroSection = () => {
 		}
 	}, [interBubbleRef, tgX, tgY, parallaxRef, cameraRef, parX, parY])
 	return (
-		<section ref={parallaxRef} className="lg:h-screen lg:max-h-[800px] overflow-hidden relative">
+		<section ref={parallaxRef} className="lg:h-screen lg:max-h-[800px] 2xl:max-h-[] overflow-hidden relative">
 			<Container className="grid lg:grid-cols-2 z-10 relative h-full">
-				<div className="flex flex-col justify-center pt-28 gap-8 md:px-28 lg:pl-20 lg:pr-16">
+				<div className="flex flex-col justify-center pt-28 gap-8 md:px-28 lg:pl-20 lg:pr-16 2xl:pr-28">
 					<Typography className="text-center lg:text-start">Ganar nunca fue tan fácil</Typography>
 					<p className="text-sm font-normal text-center lg:text-start">
 						<span>

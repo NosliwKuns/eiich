@@ -50,11 +50,11 @@ export const Navbar = () => {
 						onClick={handleOnClick}
 						className={`relative h-10 ${
 							isOpened ? "px-2" : ""
-						} w-10 flex flex-col gap-2 justify-center aspect-square transition-all`}
+						} w-10 flex flex-col gap-2 justify-center lg:hidden aspect-square transition-all`}
 					>
 						<span
 							className={`${
-								isOpened && "rotate-[45deg] w-[38px]"
+								isOpened && "rotate-[45deg] w-[calc(40px-3px)]"
 							} origin-left bg-electric-violet-950 block w-full h-[5px] rounded-full transition-transform`}
 						></span>
 						<span
@@ -64,7 +64,7 @@ export const Navbar = () => {
 						></span>
 						<span
 							className={`${
-								isOpened && "-rotate-[45deg] w-[38px]"
+								isOpened && "-rotate-[45deg] w-[calc(40px-3px)]"
 							} origin-left bg-electric-violet-950 block w-full h-[5px] rounded-full transition-transform`}
 						></span>
 					</button>

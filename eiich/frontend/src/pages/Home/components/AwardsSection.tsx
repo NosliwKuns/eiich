@@ -48,8 +48,8 @@ export const AwardsSection = () => {
   return (
 		<section className="mt-12">
 			<Container>
-				<Typography className="text-center">Premios semanales</Typography>
-				<div ref={containerRef} className="h-[175vh] relative overflow-hidden flex gap-[2vw] p-[2vw] mt-12">
+				<Typography className="text-center" text="text-3xl md:text-5xl">Premios semanales</Typography>
+				<div ref={containerRef} className="h-[175vh] relative overflow-hidden flex gap-6 mt-12 2xl:py-12 rounded-2xl">
 					<Column className="w-full md:w-1/2" images={[imgs[0], imgs[1], imgs[2], imgs[0]]} y={y} />
 					<Column className="w-1/2 hidden md:flex" images={[imgs[3], imgs[4], imgs[5], imgs[3]]} y={y2} />
 					<Column className="hidden lg:flex w-1/2" images={[imgs[6], imgs[7], imgs[8], imgs[6]]} y={y3} />

@@ -9,12 +9,12 @@ export const Benefits = () => {
 	return (
 		<div className="min-h-[calc(100vh-394px)] pb-8">
 			<Header>
-				<Typography className="px-40 text-center">
+				<Typography className="text-center md:px-10 lg:px-20" text="text-2xl md:text-4xl lg:text-5xl">
 					Descubre un universo de beneficios exclusivos
 				</Typography>
 			</Header>
 			<Container>
-				<div className="flex justify-center gap-12 mt-28">
+				<div className="flex flex-wrap justify-center gap-x-12 gap-y-20 mt-28">
 					<BenefitCard
 						image={camara}
 						classImage="-top-[15%] left-[53%] w-[80%]"

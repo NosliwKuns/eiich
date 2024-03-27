@@ -14,7 +14,7 @@ export const PlansCard: React.FC<props> = ({
 }) => {
 	return (
 		<div className="relative w-full max-w-[410px] group">
-			<div className="relative bg-white flex flex-col justify-between gap-12 px-10 py-16 h-full rounded-2xl border border-transparent cursor-pointer hover:border hover:border-vividIndig z-10">
+			<div className="relative bg-white flex flex-col justify-between gap-12 px-10 py-16 h-full rounded-2xl cursor-pointer z-10 transition-colors">
 				<div>
 					<h4 className="text-xl mb-2">{planType}</h4>
 					<h6 className="relative">
@@ -30,7 +30,7 @@ export const PlansCard: React.FC<props> = ({
 					Suscribirme
 				</Buttom>
 			</div>
-			<span className="absolute top-0 inset- w-full h-full transition-all duration-200 ease-out rounded-2xl shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-md from-electricPurple to-vividIndigo opacity-30"></span>
+			<span className="absolute top-0 w-full h-full transition-all duration-200 ease-out rounded-2xl shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-md from-electricPurple to-vividIndigo opacity-30"></span>
 		</div>
 	)
 }
